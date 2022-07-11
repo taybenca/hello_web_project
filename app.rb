@@ -15,4 +15,17 @@ class Application < Sinatra::Base
     name = params[:name]
     return "Hello #{name}"
   end
+
+  # Declares a route that responds to a request with:
+  #  - a POST method
+  #  - the path /submit
+  # With body parameters:
+  # name=Leo
+  # message=Hello world
+  
+  post '/submit' do
+    name = params[:name]
+    message = params[:message]
+    return "Thanks #{name}, you sent this message: '#{message}'"
+  end
 end
