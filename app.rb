@@ -16,6 +16,14 @@ class Application < Sinatra::Base
     return "Hello #{name}"
   end
 
+  get '/names' do
+    name1 = params[:name1]
+    name2 = params[:name2]
+    name3 = params[:name3]
+    return "#{name1}, #{name2}, #{name3}"
+  end
+
+  
   # Declares a route that responds to a request with:
   #  - a POST method
   #  - the path /submit
@@ -27,5 +35,11 @@ class Application < Sinatra::Base
     name = params[:name]
     message = params[:message]
     return "Thanks #{name}, you sent this message: '#{message}'"
+  end
+
+  post '/sort-names' do
+    names = params[:names]
+    names_arr = names.split(",").sort
+    return names_arr.join(",")
   end
 end

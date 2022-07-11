@@ -73,6 +73,22 @@ describe Application do
       # expect(response.body).to eq(expected_response)
     end
   end
+
+  context "GET/names" do
+    it "return 200 OK with the correct content" do 
+        response = get("/names", name1: "Julia", name2:"Mari", name3:"Karim")
+        expect(response.status).to eq(200)
+        expect(response.body).to eq("Julia, Mary, Karim")
+    end
+  end
+
+  context "POST/sort-names" do
+    it "return 200 OK with correct content" do
+        response = post("/sort-names", names: "Joe,Alice,Zoe,Julia,Kieran")
+        expect(response.status).to eq(200)
+        expect(response.body).to eq("Alice,Joe,Julia,Kieran,Zoe")
+    end
+  end
 end
 ```
 
