@@ -11,7 +11,7 @@ describe Application do
   let(:app) { Application.new }
 
   context "GET to /hello" do
-    it 'returns 200 OK with the right content' do
+    xit 'returns 200 OK with the right content' do
       response = get("/hello", name: "Leo")
       expect(response.status).to eq(200)
       expect(response.body).to eq('Hello Leo')
@@ -39,6 +39,14 @@ describe Application do
         response = post("/sort-names", names: "Joe,Alice,Zoe,Julia,Kieran")
         expect(response.status).to eq(200)
         expect(response.body).to eq("Alice,Joe,Julia,Kieran,Zoe")
+    end
+  end
+
+  context "GET /hello" do
+    it "returns 200 OK with 'hello' formatted html" do
+      response = get("/hello")
+      expect(response.status).to eq(200)
+      expect(response.body).to include("<h1>Hello!</h1>")
     end
   end
 end

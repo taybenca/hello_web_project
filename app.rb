@@ -12,8 +12,7 @@ class Application < Sinatra::Base
   #  - a GET method
   #  - the path /hello?name=Leo
   get '/hello' do
-    name = params[:name]
-    return "Hello #{name}"
+    return erb(:index)
   end
 
   get '/names' do
